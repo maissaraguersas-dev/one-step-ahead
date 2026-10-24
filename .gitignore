@@ -1,0 +1,11 @@
+# Secrets — never commit a real key
+.env
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log

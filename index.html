@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Step Ahead</title>
+<meta name="description" content="One tiny step at a time, for when a task feels too big to start.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%233D6A5C'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <p class="brand">One Step Ahead</p>
+  <div class="display-toggles" role="group" aria-label="Display settings">
+    <button type="button" id="textSizeToggle" class="toggle-btn" aria-pressed="false">Bigger text</button>
+    <button type="button" id="fontToggle" class="toggle-btn" aria-pressed="false">Easier reading</button>
+  </div>
+</header>
+
+<p id="modeBadge" class="mode-badge" hidden>Demo mode — sample steps, no connection needed</p>
+
+<main id="main" class="container">
+
+  <section id="screen-start" class="screen" aria-labelledby="startHeading">
+    <h1 id="startHeading">What&rsquo;s the big thing you&rsquo;re avoiding?</h1>
+    <p class="sub">One step at a time. You&rsquo;ll only ever see the next tiny thing.</p>
+    <form id="startForm" novalidate>
+      <label class="goal-label" for="goalInput">Type it here, however vague</label>
+      <input id="goalInput" name="goal" type="text" autocomplete="off" spellcheck="false"
+             maxlength="2000" placeholder="Write research paper&hellip;">
+      <button type="submit" id="startBtn" class="btn btn-primary btn-big">Show me the first step</button>
+    </form>
+  </section>
+
+  <section id="screen-loading" class="screen" hidden>
+    <p class="loading-msg" id="loadingMsg" role="status">Finding your first step&hellip;</p>
+  </section>
+
+  <section id="screen-step" class="screen" aria-labelledby="stepHeading">
+    <p class="ack" id="ackLine" hidden></p>
+    <div class="step-card">
+      <h2 class="step-eyebrow" id="stepHeading">Your next step</h2>
+      <p class="step-text" id="stepText" tabindex="-1"></p>
+      <p class="step-time" id="stepTime"></p>
+    </div>
+    <div class="step-actions">
+      <button type="button" id="doneBtn" class="btn btn-primary btn-big">Done &#10003;</button>
+      <button type="button" id="tooHeavyBtn" class="btn btn-secondary btn-big">Too heavy</button>
+    </div>
+    <p class="tally" id="tally" hidden></p>
+    <div class="support-row" role="group" aria-label="More options">
+      <button type="button" id="breakBtn" class="btn btn-quiet">Take a break</button>
+      <button type="button" id="altBtn" class="btn btn-quiet">This step doesn&rsquo;t fit</button>
+      <button type="button" id="restartBtn" class="btn btn-quiet">Start over with a new goal</button>
+    </div>
+  </section>
+
+  <section id="screen-break" class="screen" aria-labelledby="breakHeading">
+    <h1 id="breakHeading">Take a break.</h1>
+    <p class="sub">Your step is saved. It&rsquo;ll be right here whenever you&rsquo;re ready.</p>
+    <button type="button" id="resumeBtn" class="btn btn-primary btn-big">I&rsquo;m back</button>
+    <div class="support-row">
+      <button type="button" id="restartFromBreakBtn" class="btn btn-quiet">Start over with a new goal</button>
+    </div>
+  </section>
+
+  <section id="screen-complete" class="screen" aria-labelledby="completeHeading">
+    <h1 id="completeHeading" tabindex="-1">You did it.</h1>
+    <p class="sub" id="completeSummary"></p>
+    <p class="demo-note" id="demoCompleteNote" hidden>That was a sample demo breakdown. With a live connection, steps keep going until your real goal is done.</p>
+    <button type="button" id="newGoalBtn" class="btn btn-primary btn-big">Start a new goal</button>
+  </section>
+
+  <section id="screen-error" class="screen" aria-labelledby="errorHeading">
+    <h1 id="errorHeading">That took too long.</h1>
+    <p class="sub">No pressure &mdash; the connection just hiccuped.</p>
+    <button type="button" id="retryBtn" class="btn btn-primary btn-big">Try again</button>
+    <div class="support-row">
+      <button type="button" id="fallbackBtn" class="btn btn-quiet">Just give me a step anyway</button>
+    </div>
+  </section>
+
+</main>
+
+<p class="sr-only" id="liveRegion" aria-live="polite"></p>
+
+<footer class="site-footer">
+  <p>One Step Ahead &mdash; not a medical tool. Your goal stays on your device unless live mode is on.</p>
+</footer>
+
+<script src="prompts.js"></script>
+<script src="demo-engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
